@@ -6,5 +6,11 @@ public class Teacher extends User {
       String academicDegree) {
     super(firstName, lastName, email, password);
     this.academicDegree = academicDegree;
+
+  }
+  @Override
+  public String toString() {
+    return "Nauczyciel "+academicDegree;
+
   }
 }
