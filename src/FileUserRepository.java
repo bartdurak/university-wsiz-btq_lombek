@@ -22,6 +22,11 @@ implements UserRepository {
         } catch (IOException e) {
             throw new RuntimeException(e);
 
+        }
+    }
+
+    @Override
+    public List<User> findAll() {
+        return null;
     }
 }
-
