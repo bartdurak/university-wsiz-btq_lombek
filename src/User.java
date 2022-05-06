@@ -16,4 +16,19 @@ public User(String firstName, String lastName, String email, String password )
     this.password = password;
 
 }
+
+public String getEmail() {
+    return email;
 }
+
+public String getPassword() {
+    return password;
+
+}
+public abstract UserRole getRole();
+
+@Override
+    public String toString() {
+    return firstName+""+lastName+ "("+email+")\n" + "Funkcja: " + getRole().getTranslated();
+}
+    }

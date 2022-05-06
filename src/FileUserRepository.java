@@ -27,6 +27,33 @@ implements UserRepository {
 
     @Override
     public List<User> findAll() {
+        List<User> users;
+        File file = new File("users.bin");
+        FileOutputStream fileInputStream = null;
+        ObjectInputStream objectInputStream = null;
+        try {
+            Object object = objectInputStream.readObject();
+            users = (List) object;
+            objectInputStream.close();
+            fileInputStream.close();
+        } catch (FileNotFoundException e) {
+            users = new ArrayList<>();
+        } catch (IOException | ClassNotFoundException e) {
+            throw new RuntimeException(e);
+        }
+        return users;
+
+    }
+
+
+    @Override
+    public User findByEmailAndPassword(String email, String password) {
+        List<User> users = findAll();
+        for (User user : users) {
+            if (user.getEmail().equalsIgnoreCase(email)
+                    && user.getPassword().equals(password)) {
+                return user;
+            }
+        }
         return null;
     }
-}
